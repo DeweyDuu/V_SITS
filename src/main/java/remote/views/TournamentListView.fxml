@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0"
+    xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="remote.views.LobbyController">
+  <top>
+    <Label text="Tournaments" BorderPane.alignment="CENTER">
+      <font><Font size="30.0" /></font>
+    </Label>
+  </top>
+  <center>
+    <ListView fx:id="tournamentListView" prefHeight="300.0" prefWidth="600.0"
+              BorderPane.alignment="CENTER" />
+  </center>
+  <bottom>
+    <HBox spacing="10" BorderPane.alignment="CENTER">
+      <children>
+        <Button text="Start Tournament" onAction="#onStart" />
+        <Button text="View Moves" onAction="#watchSelected" />
+        <Button text="Refresh" onAction="#refresh" />
+      </children>
+    </HBox>
+  </bottom>
+</BorderPane>
