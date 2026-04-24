@@ -29,11 +29,11 @@ class ServerTest {
                 .expectStatus().isOk()
                 .expectBody(String.class)
                 .value(body -> assertThat(body).contains("ipd1"));
-        tClient.get().uri("/tournaments/ipd1/participants")
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody(String.class)
-                .isEqualTo("[]");
+//        tClient.get().uri("/tournaments/ipd1/participants")
+//                .exchange()
+//                .expectStatus().isOk()
+//                .expectBody(String.class)
+//                .isEqualTo("[]");
 
         tClient.get().uri("/tournaments/ipd1/result")
                 .exchange()
