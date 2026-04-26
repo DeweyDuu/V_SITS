@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import remote.dto.RegistrationRequest;
-import remote.dto.RoundResultDTO;
 import remote.server.NetworkedTournament;
 
 import java.util.Arrays;
@@ -33,26 +32,6 @@ public class TournamentServerClient {
         NetworkedTournament[] activeTournaments = restTemplate.getForObject(targetUrl, NetworkedTournament[].class);
         if (activeTournaments != null) {
             return Arrays.asList(activeTournaments);
-        } else {
-            return Arrays.asList();
-        }
-    }
-    //sprint3 addition~
-    public List<NetworkedTournament> listAllTournaments() {
-        String targetUrl = serverUrl + "/tournaments/all";
-        NetworkedTournament[] all = restTemplate.getForObject(targetUrl, NetworkedTournament[].class);
-        if (all != null) {
-            return Arrays.asList(all);
-        } else {
-            return Arrays.asList();
-        }
-    }
-    
-    public List<RoundResultDTO> getMoves(String tournamentId) {
-        String targetUrl = serverUrl + "/tournaments/" + tournamentId + "/moves";
-        RoundResultDTO[] moves = restTemplate.getForObject(targetUrl, RoundResultDTO[].class);
-        if (moves != null) {
-            return Arrays.asList(moves);
         } else {
             return Arrays.asList();
         }

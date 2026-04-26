@@ -25,6 +25,7 @@ public class TestLobbyView implements ViewerModelInterface {
     int startTournamentCalled = 0;
     int fetchTournamentsCalled = 0;
     String lastTournamentId;
+    boolean showEmpty = false;
 
     @Start
     private void start(Stage stage) throws IOException {
@@ -70,6 +71,25 @@ public class TestLobbyView implements ViewerModelInterface {
         Assertions.assertThat(fetchTournamentsCalled).isEqualTo(2);
         Assertions.assertThat(getList(robot)).hasExactlyNumItems(2);
     }
+    
+    @Test
+    public void testRefreshEmpty(FxRobot robot) {
+        showEmpty = true;
+        robot.clickOn("Refresh");
+        Assertions.assertThat(getList(robot)).hasExactlyNumItems(0);
+    }
+
+    @Test
+    public void testWatchSelectedNoSelection(FxRobot robot) {
+        robot.clickOn("View Moves");
+        Assertions.assertThat(showMovesCalled).isEqualTo(0);
+    }
+
+    @Test
+    public void testStartNoSelection(FxRobot robot) {
+        robot.clickOn("Start Tournament");
+        Assertions.assertThat(startTournamentCalled).isEqualTo(0);
+    }
 
     @Override public void connect(String ip, int port) {}
     @Override public void showConnect() {}
@@ -77,6 +97,7 @@ public class TestLobbyView implements ViewerModelInterface {
     @Override public void showMoves(String id) { showMovesCalled++; lastTournamentId = id; }
     @Override public List<NetworkedTournament> fetchTournaments() {
         fetchTournamentsCalled++;
+        if (showEmpty) return List.of();
         return List.of(
             new NetworkedTournament("t1", "Tournament One", null, null, null),
             new NetworkedTournament("t2", "Tournament Two", null, null, null)

@@ -24,6 +24,7 @@ import remote.server.NetworkedTournament;
 public class TestLiveGameView implements ViewerModelInterface {
 
     int showTournamentListCalled = 0;
+    boolean emptyMoves = false;
 
     @Start
     private void start(Stage stage) throws IOException {
@@ -54,6 +55,13 @@ public class TestLiveGameView implements ViewerModelInterface {
         Assertions.assertThat(getMovesList(robot))
             .hasListCell("P1: COOPERATE | P2: DEFECT | Score: 0-5");
     }
+    @Test
+    public void testEmptyMovesDisplay(FxRobot robot) throws InterruptedException {
+        emptyMoves = true;
+        Thread.sleep(1100);
+        WaitForAsyncUtils.waitForFxEvents();
+        Assertions.assertThat(getMovesList(robot)).hasExactlyNumItems(0);
+    }
     
     @Test
     public void testBack(FxRobot robot) {
@@ -68,6 +76,7 @@ public class TestLiveGameView implements ViewerModelInterface {
     @Override public void showMoves(String id) {}
     @Override public List<NetworkedTournament> fetchTournaments() { return List.of(); }
     @Override public List<RoundResultDTO> getMoves(String id) {
+    	if (emptyMoves) return List.of();
         return List.of(new RoundResultDTO("COOPERATE", "DEFECT", 0, 5));
     }
     @Override public void startTournament(String id) {}
