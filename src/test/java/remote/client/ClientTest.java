@@ -44,7 +44,7 @@ class ClientTest {
                 .value(action -> assertThat(action).isNotBlank());
 
         GameHistoryDTO withHistory = new GameHistoryDTO("Always Cooperate", "Opponent",
-                List.of(new RoundResultDTO("COOPERATE", "DEFECT", 0, 5)));
+                List.of(new RoundResultDTO("Always Cooperate", "Opponent", "COOPERATE", "DEFECT", 0, 5)));
 
         tClient.post().uri("/action")
                 .body(withHistory)

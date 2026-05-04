@@ -41,8 +41,8 @@ public class LiveGameController {
                 List<RoundResultDTO> moves = model.getMoves(tournamentId);
                 List<String> display = new ArrayList<>();
                 for (RoundResultDTO r : moves) {
-                    display.add("P1: " + r.actionP1 + " | P2: " + r.actionP2 +
-                                " | Score: " + r.scoreP1 + "-" + r.scoreP2);
+                    display.add(r.p1Name + ": " + r.actionP1 + " | " + r.p2Name + ": " + r.actionP2 +
+                            " | Score: " + r.scoreP1 + "-" + r.scoreP2);
                 }
                 Platform.runLater(() ->
                     movesListView.setItems(FXCollections.observableArrayList(display))

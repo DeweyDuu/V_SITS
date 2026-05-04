@@ -25,6 +25,8 @@ public class GameHistoryDTO {
         for (int i = 0; i < h.getRounds().size(); i++) {
             RoundResult r = h.getRounds().get(i);
             dtos.add(new RoundResultDTO(
+            	h.getP1Name(),
+                h.getP2Name(),
                 r.getActionP1().getLabel(),
                 r.getActionP2().getLabel(),
                 r.getScoreP1(),

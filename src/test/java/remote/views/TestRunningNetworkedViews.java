@@ -63,7 +63,7 @@ public class TestRunningNetworkedViews {
         Thread.sleep(2100);
         WaitForAsyncUtils.waitForFxEvents();
         Assertions.assertThat(getMovesList(robot))
-            .hasListCell("P1: DEFECT | P2: COOPERATE | Score: 5-0");
+            .hasListCell("Always Defect: DEFECT | Always Cooperate: COOPERATE | Score: 5-0");
     }
     
     @Test

@@ -44,8 +44,8 @@ class GameHistoryDTOTest {
     void testToGameHistory() {
         List<RoundResultDTO> rounddtos = new ArrayList<>();
         
-        rounddtos.add(new RoundResultDTO("COOPERATE", "DEFECT", 0, 5));
-        rounddtos.add(new RoundResultDTO("DEFECT", "DEFECT", 1, 1));
+        rounddtos.add(new RoundResultDTO("tftBot", "DefectBot", "COOPERATE", "DEFECT", 0, 5));
+        rounddtos.add(new RoundResultDTO("tftBot", "DefectBot", "DEFECT", "DEFECT", 1, 1));
 
         GameHistoryDTO dto = new GameHistoryDTO("tftBot", "DefectBot", rounddtos);
 

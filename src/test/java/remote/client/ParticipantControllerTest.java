@@ -34,7 +34,7 @@ class ParticipantControllerTest {
         GameHistoryDTO incomingRequest = new GameHistoryDTO(
                 "TestBot",
                 "BadBot",
-                List.of(new RoundResultDTO("COOPERATE", "DEFECT", 0, 5))
+                List.of(new RoundResultDTO("TestBot", "BadBot", "COOPERATE", "DEFECT", 0, 5))
         );
 
         assertEquals("TestBot", controller.getName());

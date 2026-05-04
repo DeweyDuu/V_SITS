@@ -38,6 +38,8 @@ public class NetworkedTournament {
         public void onMoveMade(MoveEvent e) {
             RoundResult r = e.getRoundResult();
             moveHistory.add(new RoundResultDTO(
+                e.getGameHistory().getP1Name(),
+                e.getGameHistory().getP2Name(),
                 r.getActionP1().getLabel(),
                 r.getActionP2().getLabel(),
                 r.getScoreP1(),

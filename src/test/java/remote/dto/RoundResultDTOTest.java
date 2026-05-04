@@ -7,7 +7,7 @@ class RoundResultDTOTest {
 
     @Test
     void testConstructorSetsFields() {
-        RoundResultDTO dto = new RoundResultDTO("COOPERATE", "DEFECT", 0, 5);
+        RoundResultDTO dto =  new RoundResultDTO("P1", "P2", "COOPERATE", "DEFECT", 0, 5);
 
         assertEquals("COOPERATE", dto.actionP1);
         assertEquals("DEFECT", dto.actionP2);
@@ -27,8 +27,7 @@ class RoundResultDTOTest {
 
     @Test
     void testBothDefect() {
-        RoundResultDTO dto = new RoundResultDTO("DEFECT", "DEFECT", 1, 1);
-
+        RoundResultDTO dto = new RoundResultDTO("P1", "P2", "DEFECT", "DEFECT", 1, 1);
         assertEquals("DEFECT", dto.actionP1);
         assertEquals("DEFECT", dto.actionP2);
         assertEquals(1, dto.scoreP1);

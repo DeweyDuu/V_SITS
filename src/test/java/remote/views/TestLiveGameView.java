@@ -77,7 +77,7 @@ public class TestLiveGameView implements ViewerModelInterface {
     @Override public List<NetworkedTournament> fetchTournaments() { return List.of(); }
     @Override public List<RoundResultDTO> getMoves(String id) {
     	if (emptyMoves) return List.of();
-        return List.of(new RoundResultDTO("COOPERATE", "DEFECT", 0, 5));
+    	return List.of(new RoundResultDTO("P1", "P2", "COOPERATE", "DEFECT", 0, 5));
     }
     @Override public void startTournament(String id) {}
 }
