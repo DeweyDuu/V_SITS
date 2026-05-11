@@ -23,4 +23,12 @@ public class RacingDecoratorTest {
         assertEquals(12, result.getTotalScoreP1());
         assertEquals(12, result.getTotalScoreP2());
     }
+    @Test
+    public void testP2HitsGoalFirst() {
+        Game game = new RacingDecorator(new IteratedPrisonersDilemma(60), 10);
+        GameResult result = game.play(new AlwaysCooperate(), new AlwaysDefect());
+        assertEquals(0, result.getTotalScoreP1());
+        assertEquals(10, result.getTotalScoreP2());
+        assertEquals("Always Defect", result.getWinner());
+    }
 }

@@ -34,4 +34,12 @@ public class GoodToBeNiceDecoratorTest {
         assertEquals(20, result.getTotalScoreP2());
         assertEquals("Always Cooperate", result.getWinner());
     }
+    @Test
+    public void testP1WinsAfterBonus() {
+        Game game = new GoodToBeNiceDecorator(new IteratedPrisonersDilemma(1), 1, 20);
+        GameResult result = game.play(new AlwaysCooperate(), new AlwaysDefect());
+        assertEquals(20, result.getTotalScoreP1());
+        assertEquals(5, result.getTotalScoreP2());
+        assertEquals("Always Cooperate", result.getWinner());
+        }
 }
